@@ -52,7 +52,7 @@ After sharing the concept, friends encouraged me to expand the tool. I added a f
 Since I wanted to generate images in a distinctive style that I like, I had to collect the training data manually. Since the goal was to use a text-to-image model, I also had to pair each image with a caption. 
 
 ### Collecting Images 
-To create a fine-tuned model with a distinct collage aesthetic, I manually curated training images from Unsplash, which allows free use of visuals for commercial purposes (Source: [Unsplash Terms & Conditions (<https://unsplash.com/license>). I carefully selected images that I liked, tagged as “collage-style” and downloaded them. A few examples are included under `data/`
+To create a fine-tuned model with a distinct collage aesthetic, I manually curated training images from Unsplash, which allows free use of visuals for commercial purposes (Source: [Unsplash Terms & Conditions (<https://unsplash.com/license>). I carefully selected images that I liked, tagged as “collage-style” and downloaded them. A few examples are included under `sample_data/`
 
 ### Captioning 
 Initial captions were generated using the BLIP model, but it struggled with complex visuals. I rewrote the captions manually, then used GPT-4o-mini to refine them for coherence and style. The final dataset consisted of 105 image–caption pairs.
