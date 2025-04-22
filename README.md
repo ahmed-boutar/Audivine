@@ -6,9 +6,9 @@ Audivine transforms your Spotify listening habits and song lyrics into unique, c
 ## Project Structure 
 ```
 ├── client/                         # Frontend code 
-├── data/
-│   ├── captions/                   # Stores image captions
-│   └── images/                     # Stores images for training
+├── sample_data/
+│   ├── captions/                   # sample image captions
+│   └── images/                     # sample images for training
 ├── scripts/
 │   ├── caption_generator.py        # Caption generation from images using BLIP and GPT
 │   ├── cog.yaml                    # Cog configuration for Replicate model deployment
