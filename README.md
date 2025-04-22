@@ -104,7 +104,7 @@ NOTE: For inference and training, we include negative prompts to the model, whic
 The fine-tuned model is the clear choice. It produces images with the intended collage aesthetic and performs significantly better in stylistic alignment and subjective quality, despite higher latency.
 
 ## Demo 
-[PROJECT DEMO](<>)
+[PROJECT DEMO](<https://ahmedboutar.com/Audivine>)
 
 ## Ethics statement
 Audivine was built with respect for intellectual property and user privacy. All training images were sourced legally from Unsplash with proper attribution practices. User listening data is handled responsibly and never stored beyond session scope. The generated artwork is intended for personal use or artist promotion, not resale.
