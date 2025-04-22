@@ -84,7 +84,7 @@ const ArtistMarketingPage: React.FC = () => {
 
   const handleGenerateAssets = () => {
     setIsGenerating(true);
-    console.log('Form data from artist marketing page:', formData);
+    // console.log('Form data from artist marketing page:', formData);
     // console.log('Sending Spotify auth code via WebSocket');
     
     
@@ -104,7 +104,7 @@ const ArtistMarketingPage: React.FC = () => {
         setIsGenerating(false);
         }
     
-        console.log('WebSocket message in ArtistMarketing Page:', lastMessage.message);
+        // console.log('WebSocket message in ArtistMarketing Page:', lastMessage.message);
     }
     }, [lastMessage]);
 

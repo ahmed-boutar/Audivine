@@ -9,8 +9,6 @@ const UserSelectionPage: React.FC = () => {
   const location = useLocation();
   const userData = location.state;
 
-  console.log('Received data:', userData);
-
   const handleListenerSelection = () => {
     navigate('/artwork-generator', { state: userData });
   };

@@ -32,7 +32,7 @@ const ArtworkGeneratorPage: React.FC = () => {
             setIsGenerating(false);
             }
         
-            console.log('WebSocket message:', lastMessage.message);
+            // console.log('WebSocket message:', lastMessage.message);
         }
         }, [lastMessage]);
 
@@ -58,7 +58,7 @@ const ArtworkGeneratorPage: React.FC = () => {
     // }, 3000);
   };
 
-    console.log('wsReponse: ', wsResponse);
+    // console.log('wsReponse: ', wsResponse);
 
   return (
     <div className={styles.container}>

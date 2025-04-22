@@ -38,7 +38,7 @@ export class WebSocketService {
         };
 
         this.socket.onmessage = (event) => {
-          console.log('Message received:', event.data);
+          // console.log('Message received:', event.data);
           try {
             const parsedData = JSON.parse(event.data);
             this.messageListeners.forEach((listener) => listener(parsedData));
@@ -101,7 +101,7 @@ export class WebSocketService {
         };
 
         this.socket.send(JSON.stringify(messageToSend));
-        console.log('Message sent:', messageToSend);
+        // console.log('Message sent:', messageToSend);
         resolve();
       } catch (error) {
         console.error('Error sending message:', error);
