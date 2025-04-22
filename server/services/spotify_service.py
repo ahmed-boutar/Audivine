@@ -3,6 +3,7 @@ import os
 import base64
 import dotenv
 from urllib.parse import urlencode
+from flask import jsonify
 
 dotenv.load_dotenv()
 
@@ -28,6 +29,7 @@ def exchange_code_for_tokens(code):
     """
     Exchange authorization code for access and refresh tokens
     """
+    print('\nExchanging tokens now')
     client_id = os.getenv('SPOTIFY_CLIENT_ID')
     client_secret = os.getenv('SPOTIFY_CLIENT_SECRET')
     redirect_uri = os.getenv('SPOTIFY_REDIRECT_URI', 'http://localhost:5173/callback')
@@ -47,6 +49,7 @@ def exchange_code_for_tokens(code):
     }
     
     try:
+        print('\nAtemmpting post request here')
         response = requests.post(
             'https://accounts.spotify.com/api/token',
             headers=headers,
@@ -55,6 +58,7 @@ def exchange_code_for_tokens(code):
 
         # Check if the request was successful
         if response.status_code == 200:
+            print('retrieved response from spotify!')
             return response.json()
         else:
             return {
@@ -86,3 +90,27 @@ def get_user_profile(access_token):
             
     except Exception as e:
         return {"error": f"Exception during profile fetch: {str(e)}"}
+
+def spotify_callback(payload):
+    """
+    Handle the Spotify callback and exchange authorization code for tokens
+    """
+    try:
+        # code = request.json.get('code')
+        print(f'payload received in spotify_callback: {payload}')
+        code = payload.get('code', '')
+        
+        if not code:
+            return {"error": "Authorization code is required"}, 400
+        
+        # Exchange the code for access and refresh tokens
+        tokens = exchange_code_for_tokens(code)
+        print(f'tokens in spotify_callback: {tokens}')
+        
+        if "error" in tokens:
+            return tokens, 400
+        
+        return tokens
+        
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500

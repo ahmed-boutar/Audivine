@@ -7,12 +7,14 @@ dotenv.load_dotenv()
 class GeniusService:
     def __init__(self):
         self.access_token = os.getenv("GENIUS_CLIENT_ACCESS_TOKEN")
+        print(f'GENIUS SERICE TOKEN: {self.access_token}')
         # Initialize the Genius API client
         self.genius = Genius(self.access_token)
         # Configure the client to exclude annotations and automatically remove section headers
-        self.genius.verbose = False  # Set to True for debugging
+        self.genius.verbose = True  # Set to True for debugging
         self.genius.remove_section_headers = False  # Set to True if you want to remove [Verse], [Chorus] headers
         self.genius.skip_non_songs = True
+        self.genius._session.headers['User-Agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     
     def get_song_lyrics(self, track_name, artist_name):
         """Main method to get lyrics for a track by artist"""
