@@ -99,6 +99,7 @@ For Artists:
 - Similar process as above, using lyrics, album artwork, and form inputs to create prompts
 - Prompts are tuned to reflect marketing intent
 
+NOTE: For inference and training, we include negative prompts to the model, which are subjects/topics/concepts that should be avoided. In Audivine's case, the negative prompts include violence, torture, and anything violent or perceived as negative by most people
 ## Model Selected 
 The fine-tuned model is the clear choice. It produces images with the intended collage aesthetic and performs significantly better in stylistic alignment and subjective quality, despite higher latency.
 
