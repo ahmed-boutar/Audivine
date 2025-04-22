@@ -3,6 +3,44 @@
 ## Overview
 Audivine transforms your Spotify listening habits and song lyrics into unique, collage-style visual artwork. Whether you're a listener or an artist, Audivine helps turn musical identity into a powerful visual storytelling tool. For artists, it generates marketing content from album artwork, lyrics, and other metadata—creating a visual narrative for each song.
 
+## Project Structure 
+```
+├── client/                         # Frontend code 
+├── data/
+│   ├── captions/                   # Stores image captions
+│   └── images/                     # Stores images for training
+├── scripts/
+│   ├── caption_generator.py        # Caption generation from images using BLIP and GPT
+│   ├── cog.yaml                    # Cog configuration for Replicate model deployment
+│   ├── FineTuningStableDiffusionSXL.ipynb  # Notebook for SDXL fine-tuning used in Colab
+│   ├── predict.py                  # Run predictions using trained models used in Replicate
+│   └── train_dreambooth_lora_sdxl.py # fine-tuning SDXL with DreamBooth + LoRA from HF repo
+├── server/
+│   ├── models/                     # Trained models and weights
+│   └── static/artwork/                # Stores generated artwork assets
+│   └── utils/                         # Utility functions/helpers
+│   └── venv/                          # Python virtual environment
+│   └── .env                           # Environment variables (API keys, etc.)                 
+│   └── app.py                         # Flask/FastAPI main application entry
+│   └── services/
+│       ├── artwork_generation_service.py  # Core artwork generation logic
+│       ├── genius_service.py      # Interfaces with Genius API for lyrics
+│       ├── lyrics_service.py      # Central lyrics handling logic
+│       └── spotify_service.py     # Connects to Spotify API for track data
+├── README.md                      
+└── requirements.txt               # Python dependencies
+├── .gitignore   
+
+```
+
+## How To Run 
+1. Clone Repo
+2. `cd Audivine/client`
+3. `npm install`
+4. Paste the .env.local in the `Audivine/client` folder
+5. `npm run dev`
+
+Note: The backend requires to be deployed to be run. Inference is done on a GPU, and takes forever on a CPU. 
 ## Problem Addressed
 As a music producer, I struggled to promote my first EP, released in July 2023. Despite the excitement of finishing it, I felt overwhelmed by the marketing process, unsure where to start or what story to share. Traditional advice focused on telling the story behind the music, but translating that into visuals was challenging.
 
