@@ -1,0 +1,101 @@
+/* src/components/Footer/Footer.module.css */
+.footer {
+    background-color: #0a0a0a;
+    color: #b3b3b3;
+    padding: 3rem 2rem 1.5rem;
+  }
+  
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+  }
+  
+  .brand {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    color: #1DB954;
+    margin: 0 0 0.5rem;
+  }
+  
+  .tagline {
+    font-size: 0.85rem;
+    margin: 0;
+  }
+  
+  .links {
+    flex: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+  }
+  
+  .linkGroup {
+    min-width: 140px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .linkGroup h4 {
+    color: white;
+    margin: 0 0 1rem;
+    font-size: 1rem;
+  }
+  
+  .linkGroup a {
+    color: #b3b3b3;
+    text-decoration: none;
+    margin-bottom: 0.6rem;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+  }
+  
+  .linkGroup a:hover {
+    color: #1DB954;
+  }
+  
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #333;
+    padding-top: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .bottom p {
+    margin: 0;
+    font-size: 0.8rem;
+  }
+  
+  .spotify a {
+    color: #1DB954;
+    text-decoration: none;
+  }
+  
+  .spotify a:hover {
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 768px) {
+    .content,
+    .links {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }

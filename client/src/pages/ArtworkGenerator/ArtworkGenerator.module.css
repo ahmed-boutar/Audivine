@@ -1,0 +1,231 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .header h1 {
+    background: linear-gradient(to right, #1DB954, #4285F4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+  }
+  
+  .header p {
+    color: #b3b3b3;
+    font-size: 1.2rem;
+  }
+  
+  .generatorSection {
+    background-color: #222;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .generatorInfo {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  
+  .generatorInfo h2 {
+    color: white;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .stepsList {
+    color: #b3b3b3;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+  }
+  
+  .stepsList li {
+    margin-bottom: 0.75rem;
+  }
+  
+  .preferences {
+    background-color: #2a2a2a;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .preferences h3 {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+  
+  .preferencesControls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .preferenceItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .preferenceItem label {
+    color: #b3b3b3;
+    font-size: 1rem;
+  }
+  
+  .selectControl {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .generateButton {
+    background-color: #1DB954;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.2s ease;
+    min-width: 250px;
+    justify-content: center;
+  }
+  
+  .generateButton:hover {
+    background-color: #1ed760;
+    transform: translateY(-2px);
+  }
+  
+  .generateButton:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+  }
+  
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .resultSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .resultSection h2 {
+    color: white;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .artworkContainer {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+  
+  .artworkImage {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .actionButtons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .downloadButton, .regenerateButton {
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .downloadButton {
+    background-color: #1DB954;
+    color: white;
+    border: none;
+  }
+  
+  .downloadButton:hover {
+    background-color: #1ed760;
+    transform: translateY(-2px);
+  }
+  
+  .regenerateButton {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+  
+  .regenerateButton:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .artworkStory {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ddd;
+    max-width: 800px;
+    text-align: center;
+    white-space: pre-wrap;
+  }
+  
+  
+  @media (max-width: 768px) {
+    .preferencesControls {
+      grid-template-columns: 1fr;
+    }
+    
+    .actionButtons {
+      flex-direction: column;
+      width: 100%;
+    }
+    
+    .downloadButton, .regenerateButton {
+      width: 100%;
+    }
+  }

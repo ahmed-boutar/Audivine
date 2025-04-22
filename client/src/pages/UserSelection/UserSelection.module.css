@@ -1,0 +1,103 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .header h1 {
+    background: linear-gradient(to right, #1DB954, #4285F4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+  }
+  
+  .header p {
+    color: #b3b3b3;
+    font-size: 1.2rem;
+  }
+  
+  .selectionGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .selectionCard {
+    background-color: #222;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    height: 100%;
+  }
+  
+  .selectionCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+  
+  .cardContent {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+  }
+  
+  .iconContainer {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: #1DB954;
+  }
+  
+  .cardContent h2 {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+  }
+  
+  .cardContent p {
+    color: #b3b3b3;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  .selectionButton {
+    background-color: #1DB954;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+  }
+  
+  .selectionButton:hover {
+    background-color: #1ed760;
+    transform: translateY(-2px);
+  }
+  
+  @media (max-width: 768px) {
+    .selectionGrid {
+      grid-template-columns: 1fr;
+    }
+    
+    .header h1 {
+      font-size: 2rem;
+    }
+  }
