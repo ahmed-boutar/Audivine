@@ -10,8 +10,12 @@ import DashboardPage from './pages/Dashboard/Dashboard';
 // import ProfilePage from './pages/Profile/Profile';
 import CallbackPage from './pages/Callback/Callback';
 import NotFoundPage from './pages/NotFound/NotFound';
+import UserSelectionPage from './pages/UserSelection/UserSelection';
+import ArtworkGeneratorPage from './pages/ArtworkGenerator/ArtworkGenerator';
+import ArtistMarketingPage from './pages/ArtistMarketing/ArtistMarketing';
 
 const App: React.FC = () => {
+  
   return (
     <Router>
       <SpotifyAuthProvider>
@@ -31,6 +35,36 @@ const App: React.FC = () => {
                 </ProtectedRoute>
               }
             />
+            <Route 
+              path="/user-selection" 
+              element={
+                <ProtectedRoute>
+                  <UserSelectionPage />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route 
+              path="/artwork-generator" 
+              element={
+                <ProtectedRoute>
+                  <ArtworkGeneratorPage />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route 
+              path="/artist-marketing" 
+              element={
+                <ProtectedRoute>
+                  <ArtistMarketingPage />
+                </ProtectedRoute>
+              }
+            />
+
+
+            
+            
             {/* <Route 
               path="profile" 
               element={

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useSpotifyAuth } from '../../hooks/useSpotifyAuth';
 import { fetchTopTracks, fetchTopArtists } from '../../services/spotifyService';
 import styles from './Dashboard.module.css';
+import { useNavigate } from 'react-router-dom';
 
 interface Track {
   id: string;
@@ -29,6 +30,7 @@ const DashboardPage: React.FC = () => {
   const [timeRange, setTimeRange] = useState<'short_term' | 'medium_term' | 'long_term'>('medium_term');
   const [activeTab, setActiveTab] = useState<'tracks' | 'artists'>('tracks');
   const [isGenerating, setIsGenerating] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,11 +59,10 @@ const DashboardPage: React.FC = () => {
 
   const handleGenerateArtwork = () => {
     setIsGenerating(true);
-    // In a real app, this would send the data to your backend
-    setTimeout(() => {
-      setIsGenerating(false);
-      alert('Artwork generation is not implemented in this demo');
-    }, 2000);
+    const userData = {
+      topTracks: topTracks,
+    }
+    navigate('/user-selection', { state: userData });
   };
 
   const getTimeRangeLabel = () => {
@@ -133,7 +134,7 @@ const DashboardPage: React.FC = () => {
           <div className={styles.tracksGrid}>
             {/* TODO: Modify based on the number of songs
             Set this to 15 cause it looks nice */}
-            {topTracks.slice(0, 15).map((track) => (
+            {topTracks.slice(0, 5).map((track) => (
               <div key={track.id} className={styles.trackCard}>
                 <img 
                   src={track.album.images[0]?.url} 

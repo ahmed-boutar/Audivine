@@ -1,5 +1,6 @@
 // src/utils/interfaces.ts
 import { AuthActionType } from './types';
+import { MessageType } from './types';
 
 export interface AuthState {
   user: any | null;
@@ -18,4 +19,18 @@ export interface SpotifyUser {
   images: Array<{ url: string }>;
   product: string;
   // Add other relevant Spotify user properties
+}
+
+export interface WebSocketMessage {
+  action: MessageType | string;
+  payload?: any;
+  message?: string; // For backward compatibility with existing code
+}
+
+export interface WebSocketResponse {
+  type: string;
+  message?: string;
+  status?: string;
+  error?: string;
+  [key: string]: any; // Allow any additional properties
 }

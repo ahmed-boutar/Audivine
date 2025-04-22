@@ -1,8 +1,16 @@
-import { useContext, useCallback } from 'react';
+import { useContext, useCallback, useState, useEffect } from 'react';
 import { SpotifyAuthContext, SpotifyAuthActionType } from '../context/SpotifyAuthContext';
+import { useWebSocket } from './useWebSocket';
+import { MessageType } from '../utils/types';
+import { websocketService } from '../services/websocketService';
+
 
 export const useSpotifyAuth = () => {
   const context = useContext(SpotifyAuthContext);
+  const { connect: connectWebSocket, isConnected: wsConnected, sendMessage, lastMessage } = useWebSocket();
+  const [wsStatus, setWsStatus] = useState<string>('');
+  const [wsResponse, setWsResponse] = useState<any>(null);
+
 
   if (context === undefined) {
     throw new Error('useSpotifyAuth must be used within a SpotifyAuthProvider');
@@ -10,25 +18,35 @@ export const useSpotifyAuth = () => {
 
   const { isAuthenticated, user, accessToken, isLoading, dispatch } = context;
 
-  // Handle login callback from Spotify OAuth
+  useEffect(() => {
+    if (lastMessage && lastMessage.message) {
+      setWsResponse(lastMessage.message);
+      if (!isAuthenticated) {
+        handleTokenExchange(lastMessage.message);
+      }
+      
+      setWsStatus('Connection test complete!');
+    }
+  }, [lastMessage]);
+
   const handleAuthCallback = useCallback(async (code: string) => {
     try {
       dispatch({ type: SpotifyAuthActionType.SET_LOADING, payload: true });
       
-      // Call your API to exchange the code for tokens
-      const response = await fetch('/api/auth/spotify-callback', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ code }),
-      });
-      
-      if (!response.ok) {
-        throw new Error('Failed to authenticate with Spotify');
-      }
-      
-      const data = await response.json();
+      console.log('Sending Spotify auth code via WebSocket');
+      await sendMessage(MessageType.SPOTIFY_AUTH, { code });
+      console.log('WebSocket message sent, waiting for response...');
+  
+    } catch (err) {
+      console.error('Error sending WebSocket message:', err);
+      dispatch({ type: SpotifyAuthActionType.SET_LOADING, payload: false });
+      logout();
+    }
+  }, [dispatch, sendMessage]);
+
+  const handleTokenExchange = async (wsResponse : any) => {
+    try {
+      const data = wsResponse;
       
       // Set token with expiry time (usually expires in 1 hour)
       const expiryTime = Date.now() + (data.expires_in * 1000);
@@ -39,7 +57,7 @@ export const useSpotifyAuth = () => {
           expiry: expiryTime
         }
       });
-      
+  
       // Fetch user data
       const userResponse = await fetch('https://api.spotify.com/v1/me', {
         headers: {
@@ -60,8 +78,10 @@ export const useSpotifyAuth = () => {
     } catch (error) {
       console.error('Authentication error:', error);
       logout();
+    } finally {
+      dispatch({ type: SpotifyAuthActionType.SET_LOADING, payload: false });
     }
-  }, [dispatch]);
+  };
 
   // Start Spotify OAuth flow
   const login = useCallback(() => {

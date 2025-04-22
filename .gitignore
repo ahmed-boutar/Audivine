@@ -431,3 +431,9 @@ node_modules/
 
 */venv/*
 
+
+tmp/
+data/
+data.zip
+fine_tuned_sdxl.zip
+sdxl-dreambooth-output

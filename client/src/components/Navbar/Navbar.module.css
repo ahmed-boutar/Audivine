@@ -64,6 +64,12 @@
     display: flex;
     align-items: center;
   }
+  .userContainer:hover .userDropdown,
+  .userDropdown:hover {
+      display: block;
+      visibility: visible; /* Make visible when hovering */
+      opacity: 1; /* Make fully opaque */
+  }
   
   .userAvatar {
     width: 32px;
@@ -77,13 +83,17 @@
     position: absolute;
     top: 100%;
     right: 0;
-    margin-top: 0.5rem;
+    /* margin-top: 0.5rem; */
     background-color: #282828;
     border-radius: 4px;
     width: 180px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     z-index: 10;
     display: none;
+    overflow: hidden;
+    visibility: hidden; /* Start hidden */
+    opacity: 0; /* Make it invisible */
+    transition: visibility 0s, opacity 0.2s ease-in-out; /* Smooth transition */
     overflow: hidden;
   }
   
